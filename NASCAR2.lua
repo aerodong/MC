@@ -13,6 +13,7 @@ local component = require("component")
 local io = require("io")
 if not component.isAvailable("tunnel") then error("A linked card is required for this program. Please install.") end
 local tunnel = component.tunnel
+local channel = ..tunnel.channel()
 print("NASCAR initializing...")
 
 
