@@ -1,12 +1,3 @@
---[[
-This is a simple program that allows for transfer of a file over an OC network. Pronounced gift, stands for gangsir file transfer.
-The program is composed of two sub-programs, for receiving and sending. The first argument should be which action
-to take, the second is the file to send/receive to.
-example:
-gft send "/path/to/file.txt"
-By default, it can send files up to about 8190 characters, about the size of a small essay.
---]]
-
 
 local component = require("component")
 local io = require("io")
@@ -34,8 +25,8 @@ if args[1] == "receive" then
   local _,_,sender,_,_,receivedFileData = require("event").pull("modem")
   print("Got data from computer "..sender..".")
   local fileReceiveFinal = assert(io.open(args[2],"w"),"Failed to open new file to receive into.")
-  fileReceiveFinal:write(receivedFileData) --writes the receivedFileData to file.
-  fileReceiveFinal:flush() --ensure all data is written and saved.
+  fileReceiveFinal:write(receivedFileData)
+  fileReceiveFinal:flush()
   fileReceiveFinal:close()
   print("Done.")
 end
