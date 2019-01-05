@@ -11,9 +11,9 @@ By default, it can send files up to about 8190 characters, about the size of a s
 
 local component = require("component")
 local io = require("io")
-if not component.isAvailable("tunnel") then error("A linked card is required for this program. Please install.") end
+if not component.isAvailable("tunnel") then error("A network card is required for this program. Please install.") end
 local tunnel = component.tunnel
-print("NASCAR initializing...")
+print("NASCAR Initializing... Current max packet size is "..tunnel.maxPacketSize())
 
 
 local args = {...} --{send/receive,filename}
@@ -25,16 +25,17 @@ if args[1] == "send" then
 print("Preparing to send file "..args[2])
   local fileSendInitial = assert(io.open(args[2],"r"),"Failed to open existing file to send.")
   local sendString = fileSendInitial:read("*a") --reads the entire file into one gigantic string
+  tunnel.send(tostring(sendString)) --broadcasts the string on the set port.
   print("File sent. Ensure that another computer is running gft receive. Resend if necessary.")
   fileSendInitial:close()
 end
 
 if args[1] == "receive" then
   if args[2] == nil then error("Provide filesystem path to file to create on receive.") end
- print("Preparing to receive file over network into "..args[2])
-local _,_,sender,_,_,receivedFileData = require("event").pull("tunnel")
- print("Got data from computer "..sender..".")
-local fileReceiveFinal = assert(io.open(args[2],"w"),"Failed to open new file to receive into.")
+print("Preparing to receive file over network into "..args[2])
+  local _,_,sender,_,_,receivedFileData = require("event").pull("modem")
+print("Got data from computer "..sender..".")
+  local fileReceiveFinal = assert(io.open(args[2],"w"),"Failed to open new file to receive into.")
 fileReceiveFinal:write(receivedFileData) --writes the receivedFileData to file.
 fileReceiveFinal:flush() --ensure all data is written and saved.
 fileReceiveFinal:close()
