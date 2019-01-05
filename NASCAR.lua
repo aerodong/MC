@@ -32,7 +32,7 @@ end
 if args[1] == "receive" then
   if args[2] == nil then error("Provide filesystem path to file to create on receive.") end
 print("Preparing to receive file over network into "..args[2])
-  local _,_,sender,_,_,receivedFileData = require("event").pull("modem")
+  local _,_,sender,_,_,receivedFileData = require("event").pull("tunnel")
 print("Got data from computer "..sender..".")
   local fileReceiveFinal = assert(io.open(args[2],"w"),"Failed to open new file to receive into.")
 fileReceiveFinal:write(receivedFileData) --writes the receivedFileData to file.
