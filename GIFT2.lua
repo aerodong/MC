@@ -12,7 +12,7 @@ local component = require("component")
 local io = require("io")
 if not component.isAvailable("tunnel") then error("A linked card is required for this program. Please install.") end
 local tunnel = component.tunnel
-print("Gangsir's Simple File Transfer init... Current max packet size is "..modem.maxPacketSize())
+print("Gangsir's Simple File Transfer init... Current max packet size is "..tunnel.maxPacketSize())
 
 
 local args = {...} --{send/receive,filename}
