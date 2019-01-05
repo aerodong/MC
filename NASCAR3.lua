@@ -14,7 +14,7 @@ local io = require("io")
 if not component.isAvailable("tunnel") then error("A linked card is required for this program. Please install.") end
 local tunnel = component.tunnel
 local channel = ..tunnel.channel()
-print("NASCAR initializing...")
+print("NASCAR initializing...Current chanel is"..tunnel.channel())
 
 
 local args = {...} --{send/receive,filename}
