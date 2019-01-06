@@ -24,7 +24,6 @@ print("|##|  |##|                    ©2019                         |##|  |##|")
 print("|  |##|  |##|  |##|  |##|  |##|  |##|  |##|  |##|  |##|  |##|  |##|  |")
 print("|##|  |##|  |##|  |##|  |##|  |##|  |##|  |##|  |##|  |##|  |##|  |##|    
 print("            Current max packet size is"..tunnel.maxPacketSize())
-os.sleep(5)
 
 
 local args = {...} --{send/receive,filename}
