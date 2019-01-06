@@ -13,7 +13,18 @@ local component = require("component")
 local io = require("io")
 if not component.isAvailable("tunnel") then error("A network card is required for this program. Please install.") end
 local tunnel = component.tunnel
-print("NASCAR Initializing... Current max packet size is "..tunnel.maxPacketSize())
+print("|  |##|  |##|  |##|  |##|  |##|  |##|  |##|  |##|  |##|  |##|  |##|  |")
+print("|##|  |##|  |##|  |##|  |##|  |##|  |##|  |##|  |##|  |##|  |##|  |##|")
+print("|  |##|  | ______   ______________________________________  |  |##|  |")
+print("|##|  |##| ____/ | / /__/   |__/ ___//  ____/_/   |__/ __ \ |##|  |##|")
+print("|  |##|  | ___/  |/ /__/ /| |__\  \_/ /    __/ /| |_/ /_/ / |  |##|  |")
+print("|##|  |##| __/ /|  / _/ ___ |___/ // /___  _/ ___ |/ _, _/  |##|  |##|")
+print("|  |##|  | _/_/ |_/  /_/  |_/____/ \____/  /_/  |_/_/ |_|   |  |##|  |")
+print("|##|  |##|                    ©2019                         |##|  |##|")
+print("|  |##|  |##|  |##|  |##|  |##|  |##|  |##|  |##|  |##|  |##|  |##|  |")
+print("|##|  |##|  |##|  |##|  |##|  |##|  |##|  |##|  |##|  |##|  |##|  |##|    
+print("            Current max packet size is"..tunnel.maxPacketSize())
+os.sleep(5)
 
 
 local args = {...} --{send/receive,filename}
